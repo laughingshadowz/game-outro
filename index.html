@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Laughing Shadowz · Qix</title>
+<title>Hus Kingpin & MK Ortiz Present: Laughing Shadowz – The Game - A game created by MK Ortiz for the Laughing Shadowz project release. All rights reserved. </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
@@ -66,7 +66,6 @@
     <div id="ov"><h1 id="ovT"></h1><p id="ovS"></p><div id="ovB"></div></div>
   </div>
   <div id="foot">← ↑ ↓ → / WASD · P pause · M sound · swipe on touch screen</div>
-  <input type="file" id="file" accept="image/*" hidden>
 </div>
 
 <!-- Elemento de audio de fondo -->
@@ -177,7 +176,7 @@ function drawPlaceholder() {
   x.font = `120px ${GOTHIC}`; x.fillText('Laughing', W / 2, H * .38);
   x.font = `140px ${GOTHIC}`; x.fillText('Shadowz', W / 2, H * .62);
   x.shadowBlur = 0; x.fillStyle = '#8b8a88'; x.font = '13px "Courier New",monospace';
-  x.fillText('[ PLACEHOLDER · use "Load cover" to set image ]', W / 2, H * .92);
+  x.fillText('[ LAUGHING SHADOWZ ]', W / 2, H * .92);
 }
 
 function setCover(img) {
@@ -414,7 +413,7 @@ function showTitle() {
   state = 'title';
   showOv('Laughing<br>Shadowz', 'CLIP THE SHADOW · CAPTURE <em>80%</em> OF THE AREA<br>DONT LET THEM TOUCH YOUR TRAIL',
     [{ label: 'Play', fn: startGame, primary: true },
-     { label: 'Load Cover', fn: () => $('file').click() }]);
+     { label: 'Buy Album', fn: () => window.open('https://music.apple.com/us/album/laughing-shadowz/6831981997', '_blank') }]);
 }
 
 function showOv(title, sub, btns, cls) {
@@ -468,11 +467,6 @@ stageEl.addEventListener('touchmove', e => {
 const endTouch = () => { touchDir = null; };
 stageEl.addEventListener('touchend', endTouch);
 stageEl.addEventListener('touchcancel', endTouch);
-
-$('file').addEventListener('change', e => {
-  const f = e.target.files && e.target.files[0]; if (!f) return;
-  loadCover(URL.createObjectURL(f)); e.target.value = '';
-});
 
 function update(dt) {
   shake = Math.max(0, shake - dt * 30); flash = Math.max(0, flash - dt * 2.2);
